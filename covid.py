@@ -18,16 +18,13 @@ def get_data():
         os.mkdir("covid-tracker/data")
 
     date = datetime.today().strftime('%Y-%m-%d')
-    print("Current Date: {}".format(date))
 
     if not path.exists("covid-tracker/data/{}.json".format(date)):
         with open("covid-tracker/data/{}.json".format(date), "w") as df:
-            print("yeet")
             # API request
             response = requests.get(URL).json()
             json.dump(response, df)
     else:
-        print("antiyeet")
         with open("covid-tracker/data/{}.json".format(date)) as df:
             response = json.load(df)
     
